@@ -1,5 +1,7 @@
 # Inventory Management System
 
+> ⚠️ **Disclaimer:** Project ini masih dalam tahap pengembangan. Fitur dan dokumentasi dapat berubah sewaktu-waktu.
+
 Sistem manajemen inventaris full-stack untuk mencatat, memantau, dan mengelola stok barang. Dibangun dengan **React (Vite) + Tailwind CSS + Express.js + Sequelize ORM + PostgreSQL**.
 
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
