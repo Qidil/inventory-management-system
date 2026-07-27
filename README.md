@@ -13,6 +13,14 @@ Sistem manajemen inventaris full-stack untuk mencatat, memantau, dan mengelola s
 
 ---
 
+Pencatatan stok secara manual menggunakan buku atau Excel rentan terhadap kesalahan penghitungan, tidak real-time, dan sulit dilacak riwayatnya. Tidak ada kontrol siapa yang melakukan perubahan stok, sehingga ketika terjadi kehilangan atau selisih barang, sulit untuk menelusuri penyebabnya.
+
+Aplikasi ini dibuat untuk Admin (pengelola gudang/owner) dan Staff (karyawan gudang) yang ingin mencatat, memantau, dan mengelola stok barang secara akurat, transparan, dan mudah diakses.
+
+Inventory Management System menjawab semua masalah itu dengan menghadirkan sistem inventaris yang memungkinkan Admin dan Staff melakukan pencatatan barang masuk/keluar secara digital, melihat riwayat transaksi secara real-time, serta mendapatkan dashboard dan laporan untuk monitoring stok. Semua perubahan stok tercatat siapa yang melakukan, kapan, dan berapa jumlahnya — sehingga riwayat tetap utuh dan bisa dilacak kapan saja.
+
+---
+
 ## Key Features
 
 - **Authentication & RBAC** — Login JWT, middleware role-based (Admin/Staff)
