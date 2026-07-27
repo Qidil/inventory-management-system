@@ -8,7 +8,7 @@ Sistem manajemen inventaris full-stack untuk mencatat, memantau, dan mengelola s
 ![Vite](https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3-06B6D4?logo=tailwindcss&logoColor=white)
 ![Express.js](https://img.shields.io/badge/Express.js-4-000000?logo=express&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-4169E1?logo=postgresql&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-8-4479A1?logo=mysql&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES2022-F7DF1E?logo=javascript&logoColor=black)
 
 ---
@@ -45,7 +45,7 @@ Inventory Management System menjawab semua masalah itu dengan menghadirkan siste
 | HTTP Client | Axios |
 | Backend | Express.js |
 | ORM | Sequelize |
-| Database | PostgreSQL 15+ |
+| Database | MySQL 8+ |
 | Auth | JWT + bcrypt |
 | Runtime | Node.js 20 LTS |
 
@@ -69,7 +69,7 @@ npm install
 
 ### 3. Setup Database
 
-Buat database PostgreSQL, lalu copy file `.env.example`:
+Buat database MySQL, lalu copy file `.env.example`:
 
 ```bash
 # Backend
