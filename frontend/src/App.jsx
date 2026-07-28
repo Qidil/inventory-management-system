@@ -9,6 +9,11 @@ import SuppliersPage from './pages/suppliers/SuppliersPage'
 import ProductListPage from './pages/products/ProductListPage'
 import ProductFormPage from './pages/products/ProductFormPage'
 import ProductDetailPage from './pages/products/ProductDetailPage'
+import StockInPage from './pages/transactions/StockInPage'
+import StockOutPage from './pages/transactions/StockOutPage'
+import HistoryPage from './pages/transactions/HistoryPage'
+import ReportsPage from './pages/reports/ReportsPage'
+import UserManagementPage from './pages/users/UserManagementPage'
 
 function AppRoutes() {
   const { user, loading } = useAuth()
@@ -50,14 +55,16 @@ function AppRoutes() {
         <Route path="suppliers" element={<SuppliersPage />} />
         
         {/* Transactions */}
-        <Route path="transactions" element={<div className="text-gray-700">Transactions Page - Coming Soon</div>} />
+        <Route path="transactions" element={<HistoryPage />} />
+        <Route path="transactions/stock-in" element={<StockInPage />} />
+        <Route path="transactions/stock-out" element={<StockOutPage />} />
         
         {/* Admin only */}
         <Route
           path="reports"
           element={
             <ProtectedRoute adminOnly>
-              <div className="text-gray-700">Reports Page - Coming Soon</div>
+              <ReportsPage />
             </ProtectedRoute>
           }
         />
@@ -65,7 +72,7 @@ function AppRoutes() {
           path="users"
           element={
             <ProtectedRoute adminOnly>
-              <div className="text-gray-700">Users Page - Coming Soon</div>
+              <UserManagementPage />
             </ProtectedRoute>
           }
         />
