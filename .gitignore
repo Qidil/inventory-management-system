@@ -9,9 +9,9 @@ Thumbs.db
 .opencode/
 .agents/
 skills-lock.json
-install.ps1
 Inventory_Management_System_Design_Updated.md
 Inventory_Management_System_Design_Updated_v2.md
+install.ps1
 frontend/README.md
 frontend/.gitignore
 project-context/
