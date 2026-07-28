@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="32" fill="#EC008C"/>
+  
+  <!-- Inventory Box Icon -->
+  <rect x="16" y="18" width="32" height="28" rx="4" fill="white"/>
+  <rect x="20" y="22" width="24" height="4" rx="1" fill="#EC008C"/>
+  <rect x="20" y="29" width="24" height="4" rx="1" fill="#EC008C"/>
+  <rect x="20" y="36" width="24" height="4" rx="1" fill="#EC008C"/>
+  
+  <!-- Accent dot -->
+  <circle cx="32" cy="48" r="3" fill="#00B2D8"/>
+</svg>
