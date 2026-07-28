@@ -3,6 +3,12 @@ import { AuthProvider, useAuth } from './context/AuthContext'
 import ProtectedRoute from './components/layout/ProtectedRoute'
 import MainLayout from './components/layout/MainLayout'
 import LoginPage from './pages/auth/LoginPage'
+import DashboardPage from './pages/dashboard/DashboardPage'
+import CategoriesPage from './pages/categories/CategoriesPage'
+import SuppliersPage from './pages/suppliers/SuppliersPage'
+import ProductListPage from './pages/products/ProductListPage'
+import ProductFormPage from './pages/products/ProductFormPage'
+import ProductDetailPage from './pages/products/ProductDetailPage'
 
 function AppRoutes() {
   const { user, loading } = useAuth()
@@ -33,12 +39,15 @@ function AppRoutes() {
         }
       >
         {/* Dashboard */}
-        <Route index element={<div className="text-gray-700">Dashboard Page - Coming Soon</div>} />
+        <Route index element={<DashboardPage />} />
         
         {/* Master Data */}
-        <Route path="products" element={<div className="text-gray-700">Products Page - Coming Soon</div>} />
-        <Route path="categories" element={<div className="text-gray-700">Categories Page - Coming Soon</div>} />
-        <Route path="suppliers" element={<div className="text-gray-700">Suppliers Page - Coming Soon</div>} />
+        <Route path="products" element={<ProductListPage />} />
+        <Route path="products/new" element={<ProductFormPage />} />
+        <Route path="products/:id" element={<ProductDetailPage />} />
+        <Route path="products/:id/edit" element={<ProductFormPage />} />
+        <Route path="categories" element={<CategoriesPage />} />
+        <Route path="suppliers" element={<SuppliersPage />} />
         
         {/* Transactions */}
         <Route path="transactions" element={<div className="text-gray-700">Transactions Page - Coming Soon</div>} />
