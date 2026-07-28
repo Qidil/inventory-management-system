@@ -6,6 +6,7 @@ const authRoutes = require('./routes/auth')
 const categoryRoutes = require('./routes/categories')
 const supplierRoutes = require('./routes/suppliers')
 const productRoutes = require('./routes/products')
+const transactionRoutes = require('./routes/transactions')
 const { apiLimiter } = require('./middleware/rateLimiter')
 const errorHandler = require('./middleware/errorHandler')
 
@@ -25,6 +26,7 @@ app.use('/api/v1/auth', authRoutes)
 app.use('/api/v1/categories', categoryRoutes)
 app.use('/api/v1/suppliers', supplierRoutes)
 app.use('/api/v1/products', productRoutes)
+app.use('/api/v1/transactions', transactionRoutes)
 
 app.use(errorHandler)
 
