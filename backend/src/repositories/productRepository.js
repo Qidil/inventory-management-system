@@ -1,5 +1,5 @@
 const { Product, Category, Supplier } = require('../models')
-const { Op } = require('sequelize')
+const { Op, Sequelize } = require('sequelize')
 
 const productRepository = {
   async findAll({ page = 1, limit = 20, search, category_id, supplier_id, status, sort = 'name', order = 'asc' }) {
@@ -26,9 +26,15 @@ const productRepository = {
 
     // Filter by status
     if (status === 'in_stock') {
-      where.stock = { [Op.gt]: 0 }
-      // Additional condition: stock > minimum_stock
-      // We'll handle this in the service layer
+      where[Op.and] = [
+        { stock: { [Op.gt]: 0 } },
+        Sequelize.literal('stock > minimum_stock'),
+      ]
+    } else if (status === 'low_stock') {
+      where[Op.and] = [
+        { stock: { [Op.gt]: 0 } },
+        Sequelize.literal('stock <= minimum_stock'),
+      ]
     } else if (status === 'out_of_stock') {
       where.stock = 0
     }

@@ -264,10 +264,14 @@ const transactionService = {
     if (start_date || end_date) {
       where.created_at = {}
       if (start_date) {
-        where.created_at[Op.gte] = new Date(start_date)
+        const startOfDay = new Date(start_date)
+        startOfDay.setHours(0, 0, 0, 0)
+        where.created_at[Op.gte] = startOfDay
       }
       if (end_date) {
-        where.created_at[Op.lte] = new Date(end_date)
+        const endOfDay = new Date(end_date)
+        endOfDay.setHours(23, 59, 59, 999)
+        where.created_at[Op.lte] = endOfDay
       }
     }
 

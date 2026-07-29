@@ -12,6 +12,7 @@ export default function ProductFormPage() {
   const [suppliers, setSuppliers] = useState([])
   const [loading, setLoading] = useState(true)
   const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState('')
   const [formData, setFormData] = useState({
     code: '',
     name: '',
@@ -70,13 +71,13 @@ export default function ProductFormPage() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setSubmitting(true)
+    setError('')
 
     try {
       const payload = {
         ...formData,
         price: parseInt(formData.price),
         minimum_stock: parseInt(formData.minimum_stock),
-        stock: parseInt(formData.stock),
       }
 
       if (isEdit) {
@@ -85,8 +86,8 @@ export default function ProductFormPage() {
         await api.post('/products', payload)
       }
       navigate('/products')
-    } catch (error) {
-      console.error('Failed to save product:', error)
+    } catch (err) {
+      setError(err.response?.data?.message || 'Gagal menyimpan produk')
     } finally {
       setSubmitting(false)
     }
@@ -113,6 +114,12 @@ export default function ProductFormPage() {
           {isEdit ? 'Edit Product' : 'Add Product'}
         </h1>
       </div>
+
+      {error && (
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
+          {error}
+        </div>
+      )}
 
       <div className="bg-white rounded-lg shadow p-6">
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -181,7 +188,7 @@ export default function ProductFormPage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Price (IDR) *</label>
               <input
@@ -204,19 +211,6 @@ export default function ProductFormPage() {
                 required
               />
             </div>
-            {!isEdit && (
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Initial Stock *</label>
-                <input
-                  type="number"
-                  value={formData.stock}
-                  onChange={(e) => setFormData({ ...formData, stock: e.target.value })}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-magenta/20 focus:border-magenta outline-none"
-                  min="0"
-                  required
-                />
-              </div>
-            )}
           </div>
 
           <div className="flex justify-end gap-2 pt-4">
