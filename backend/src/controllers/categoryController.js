@@ -3,10 +3,12 @@ const categoryService = require('../services/categoryService')
 const categoryController = {
   async getAll(req, res) {
     try {
-      const categories = await categoryService.findAll()
+      const { page, limit, search } = req.query
+      const result = await categoryService.findAll({ page, limit, search })
       res.json({
         success: true,
-        data: categories,
+        data: result.data,
+        meta: result.meta,
       })
     } catch (error) {
       res.status(500).json({

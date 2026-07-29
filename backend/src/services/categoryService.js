@@ -1,10 +1,43 @@
 const { Category, Product } = require('../models')
+const { Op } = require('sequelize')
 
 const categoryService = {
-  async findAll() {
-    return Category.findAll({
+  async findAll({ page = 1, limit = 20, search = '' } = {}) {
+    const where = {}
+    if (search) {
+      where.name = { [Op.like]: `%${search}%` }
+    }
+
+    const offset = (page - 1) * limit
+
+    const { rows, count } = await Category.findAndCountAll({
+      where,
       order: [['name', 'ASC']],
+      limit: parseInt(limit),
+      offset: parseInt(offset),
     })
+
+    const categoriesWithCount = await Promise.all(
+      rows.map(async (category) => {
+        const productCount = await Product.count({
+          where: { category_id: category.id },
+        })
+        return {
+          ...category.toJSON(),
+          product_count: productCount,
+        }
+      })
+    )
+
+    return {
+      data: categoriesWithCount,
+      meta: {
+        page: parseInt(page),
+        limit: parseInt(limit),
+        total: count,
+        hasNext: offset + parseInt(limit) < count,
+      },
+    }
   },
 
   async findById(id) {

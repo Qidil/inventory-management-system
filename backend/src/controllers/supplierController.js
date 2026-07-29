@@ -3,10 +3,12 @@ const supplierService = require('../services/supplierService')
 const supplierController = {
   async getAll(req, res) {
     try {
-      const suppliers = await supplierService.findAll()
+      const { page, limit, search } = req.query
+      const result = await supplierService.findAll({ page, limit, search })
       res.json({
         success: true,
-        data: suppliers,
+        data: result.data,
+        meta: result.meta,
       })
     } catch (error) {
       res.status(500).json({

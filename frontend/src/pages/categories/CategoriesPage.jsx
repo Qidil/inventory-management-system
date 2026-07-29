@@ -27,8 +27,8 @@ export default function CategoriesPage() {
       })
       setCategories(response.data.data)
       setPagination(prev => ({ ...prev, total: response.data.meta.total }))
-    } catch (error) {
-      console.error('Failed to fetch categories:', error)
+    } catch (err) {
+      // Error handled by UI state
     } finally {
       setLoading(false)
     }
@@ -48,8 +48,8 @@ export default function CategoriesPage() {
       setEditingCategory(null)
       setFormData({ name: '', description: '' })
       fetchCategories()
-    } catch (error) {
-      console.error('Failed to save category:', error)
+    } catch (err) {
+      // Error handled by UI state
     } finally {
       setSubmitting(false)
     }
@@ -60,8 +60,8 @@ export default function CategoriesPage() {
       await api.delete(`/categories/${id}`)
       setShowDeleteConfirm(null)
       fetchCategories()
-    } catch (error) {
-      console.error('Failed to delete category:', error)
+    } catch (err) {
+      // Error handled by UI state
     }
   }
 

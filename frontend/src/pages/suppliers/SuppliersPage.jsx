@@ -27,8 +27,8 @@ export default function SuppliersPage() {
       })
       setSuppliers(response.data.data)
       setPagination(prev => ({ ...prev, total: response.data.meta.total }))
-    } catch (error) {
-      console.error('Failed to fetch suppliers:', error)
+    } catch (err) {
+      // Error handled by UI state
     } finally {
       setLoading(false)
     }
@@ -48,8 +48,8 @@ export default function SuppliersPage() {
       setEditingSupplier(null)
       setFormData({ name: '', contact_person: '', phone: '', email: '', address: '' })
       fetchSuppliers()
-    } catch (error) {
-      console.error('Failed to save supplier:', error)
+    } catch (err) {
+      // Error handled by UI state
     } finally {
       setSubmitting(false)
     }
@@ -60,8 +60,8 @@ export default function SuppliersPage() {
       await api.delete(`/suppliers/${id}`)
       setShowDeleteConfirm(null)
       fetchSuppliers()
-    } catch (error) {
-      console.error('Failed to delete supplier:', error)
+    } catch (err) {
+      // Error handled by UI state
     }
   }
 

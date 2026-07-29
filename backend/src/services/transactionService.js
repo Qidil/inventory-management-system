@@ -1,6 +1,6 @@
 const { Op } = require('sequelize')
 const { StockTransaction, Product, Category, User } = require('../models')
-const sequelize = require('../config/database')
+const { sequelize } = require('../models')
 
 const transactionService = {
   async stockIn(data, userId) {

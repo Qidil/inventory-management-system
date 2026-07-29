@@ -15,11 +15,11 @@ export default function ProductDetailPage() {
 
   const fetchProduct = async () => {
     try {
+      setLoading(true)
       const response = await api.get(`/products/${id}`)
       setProduct(response.data.data)
     } catch (error) {
-      console.error('Failed to fetch product:', error)
-      navigate('/products')
+      navigate('/products', { state: { error: 'Produk tidak ditemukan' } })
     } finally {
       setLoading(false)
     }

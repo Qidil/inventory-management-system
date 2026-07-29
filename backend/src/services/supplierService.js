@@ -1,10 +1,31 @@
 const { Supplier, Product } = require('../models')
+const { Op } = require('sequelize')
 
 const supplierService = {
-  async findAll() {
-    return Supplier.findAll({
+  async findAll({ page = 1, limit = 20, search = '' } = {}) {
+    const where = {}
+    if (search) {
+      where.name = { [Op.like]: `%${search}%` }
+    }
+
+    const offset = (page - 1) * limit
+
+    const { rows, count } = await Supplier.findAndCountAll({
+      where,
       order: [['name', 'ASC']],
+      limit: parseInt(limit),
+      offset: parseInt(offset),
     })
+
+    return {
+      data: rows,
+      meta: {
+        page: parseInt(page),
+        limit: parseInt(limit),
+        total: count,
+        hasNext: offset + parseInt(limit) < count,
+      },
+    }
   },
 
   async findById(id) {
