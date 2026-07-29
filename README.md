@@ -19,6 +19,8 @@ Aplikasi ini dibuat untuk Admin (pengelola gudang/owner) dan Staff (karyawan gud
 
 Inventory Management System menjawab semua masalah itu dengan menghadirkan sistem inventaris yang memungkinkan Admin dan Staff melakukan pencatatan barang masuk/keluar secara digital, melihat riwayat transaksi secara real-time, serta mendapatkan dashboard dan laporan untuk monitoring stok. Semua perubahan stok tercatat siapa yang melakukan, kapan, dan berapa jumlahnya — sehingga riwayat tetap utuh dan bisa dilacak kapan saja.
 
+![Dashboard Screenshot](assets/screenshot/dashboard.png)
+
 ---
 
 ## Key Features
@@ -167,6 +169,3 @@ Base URL: `http://localhost:3000/api/v1`
 
 ---
 
-## License
-
-MIT
